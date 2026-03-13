@@ -1,0 +1,399 @@
+/* ============================================
+   Campamento Sol y Deportes
+   Swiss Poster / National Park Aesthetic
+   ============================================ */
+
+:root {
+  /* Colors - Field Guide Palette */
+  --canvas: #F4EBD9;   /* Warm cream paper */
+  --ink: #2B2A28;      /* Soft black ink */
+  --forest: #1A3A32;   /* Deep National Park green */
+  --terra: #D35230;    /* Muted orange/red stamp color */
+  --sun: #E6B222;      /* Golden yellow */
+
+  /* Typography */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  /* Borders & Grid */
+  --border-weight: 3px;
+  --border-solid: var(--border-weight) solid var(--ink);
+  --border-dashed: 2px dashed var(--ink);
+}
+
+/* ---------- RESET ---------- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--canvas);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  padding: 2vw;
+}
+
+/* Subtle texture */
+body::after {
+  content: ''; position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ---------- FRAMEWORK ---------- */
+.site-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  border: var(--border-solid);
+  background: var(--canvas);
+  position: relative;
+  box-shadow: 10px 10px 0 var(--forest);
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ---------- MASTHEAD (HEADER) ---------- */
+.masthead {
+  border-bottom: var(--border-solid);
+  background: var(--forest);
+  color: var(--canvas);
+  text-align: center;
+}
+
+.masthead-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: var(--border-solid);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--sun);
+  color: var(--ink);
+}
+
+.masthead-main {
+  padding: 8vw 2vw;
+  background-image: 
+    linear-gradient(var(--forest) 2px, transparent 2px),
+    linear-gradient(90deg, var(--forest) 2px, transparent 2px);
+  background-size: 20px 20px;
+  background-color: #153029;
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  line-height: 0.85;
+  letter-spacing: 2px;
+  margin: 0;
+  color: var(--canvas);
+  text-shadow: 4px 4px 0 var(--ink);
+}
+
+.masthead-bottom {
+  padding: 15px;
+  border-top: var(--border-solid);
+  background: var(--terra);
+  color: var(--canvas);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 4px;
+}
+
+/* ---------- MAIN GRID ---------- */
+.content-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-section {
+  border-bottom: var(--border-solid);
+}
+
+.field-section:last-child {
+  border-bottom: none;
+}
+
+.section-title-block {
+  padding: 30px 40px;
+  border-bottom: var(--border-solid);
+  background: var(--sun);
+}
+
+.section-title-block.inverted {
+  background: var(--ink);
+  color: var(--canvas);
+}
+
+.section-title-block h2 {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.section-title-block p {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ---------- 01: SCHEDULE TIMETABLE ---------- */
+.timetable {
+  display: flex;
+  flex-direction: column;
+}
+
+.time-row {
+  display: flex;
+  border-bottom: var(--border-solid);
+  background: var(--canvas);
+  transition: background 0.2s;
+}
+
+.time-row:last-child { border-bottom: none; }
+.time-row:hover { background: #EFE4CC; }
+
+.time-col {
+  width: 140px;
+  flex-shrink: 0;
+  border-right: var(--border-solid);
+  padding: 20px;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 0.9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--forest);
+}
+
+.desc-col {
+  padding: 24px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.desc-col strong {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.desc-col span {
+  font-size: 1.1rem;
+  color: #4A4844;
+}
+
+.highlight-action { background: var(--sun); }
+.highlight-action:hover { background: #D9A61C; }
+.highlight-action .time-col { color: var(--ink); border-right-color: var(--ink); }
+
+.highlight-explore { background: var(--forest); color: var(--canvas); }
+.highlight-explore:hover { background: #153029; }
+.highlight-explore .time-col { color: var(--sun); border-right-color: var(--canvas); }
+.highlight-explore .desc-col span { color: #A3B8B2; }
+
+.tag-group {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.action-tag {
+  border: 2px solid var(--ink);
+  padding: 4px 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  background: var(--canvas);
+  color: var(--ink);
+}
+
+.highlight-explore .action-tag {
+  border-color: var(--canvas);
+  background: transparent;
+  color: var(--canvas);
+}
+
+.notice-box {
+  padding: 15px 40px;
+  background: var(--ink);
+  color: var(--canvas);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ---------- 02: GUIDES (STAFF) ---------- */
+.guide-profiles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.guide-card {
+  border-right: var(--border-solid);
+  display: flex;
+  flex-direction: column;
+}
+
+.guide-card:last-child {
+  border-right: none;
+}
+
+.guide-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  border-bottom: var(--border-solid);
+  background: var(--canvas);
+}
+
+.initial-stamp {
+  width: 80px; height: 80px;
+  border: var(--border-solid);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  background: var(--terra);
+  color: var(--canvas);
+}
+
+.stamp-alt {
+  background: var(--sun);
+  color: var(--ink);
+}
+
+.guide-titles h3 {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  line-height: 1;
+  margin: 0;
+}
+
+.rank {
+  font-weight: 800;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--terra);
+}
+
+.guide-quote {
+  padding: 30px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.6;
+  flex: 1;
+  background: #EFE4CC;
+}
+
+/* ---------- 03: DICTIONARY ---------- */
+.dict-tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dict-column {
+  border-right: var(--border-solid);
+}
+
+.dict-column:last-child {
+  border-right: none;
+}
+
+.col-head {
+  padding: 15px 20px;
+  border-bottom: var(--border-solid);
+  text-align: center;
+}
+
+.bg-forest { background: var(--forest); color: var(--canvas); }
+.bg-terra { background: var(--terra); color: var(--canvas); }
+
+.col-head h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.vocab-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.vocab-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-bottom: 2px solid var(--ink);
+  font-size: 1.05rem;
+}
+
+.vocab-row:last-child { border-bottom: none; }
+.vocab-row:nth-child(even) { background: #EFE4CC; }
+
+.lang-es { font-weight: 800; text-transform: uppercase; }
+.lang-es small { text-transform: none; font-weight: 500; }
+.lang-en { color: #4A4844; font-weight: 500; }
+
+/* ---------- FOOTER ---------- */
+.site-footer {
+  padding: 40px;
+  text-align: center;
+  background: var(--ink);
+  color: var(--canvas);
+}
+
+.footer-stamp {
+  margin-bottom: 20px;
+  color: var(--sun);
+}
+
+.footer-text {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+
+.footer-subtext {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--sun);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 900px) {
+  .masthead-top { flex-direction: column; gap: 5px; text-align: center; }
+  .guide-profiles, .dict-tables { grid-template-columns: 1fr; }
+  .guide-card, .dict-column { border-right: none; border-bottom: var(--border-solid); }
+  .guide-card:last-child, .dict-column:last-child { border-bottom: none; }
+}
+
+@media (max-width: 600px) {
+  .time-row { flex-direction: column; }
+  .time-col { width: 100%; border-right: none; border-bottom: var(--border-solid); padding: 15px; flex-direction: row; justify-content: flex-start; }
+  .time-col br { display: none; }
+  .time-col::after { content: " — "; margin: 0 10px; }
+  .masthead h1 { font-size: 3.5rem; }
+}
